@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slideshow</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2C3539;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .slideshow-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .slide img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: darkolivegreen;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+        .prev {
+            left: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="slides">
+            <div class="slide"><img src="pexels-apasaric-1285625.jpg" alt="Image 1"></div>
+            <div class="slide"><img src="pexels-asadphoto-1268855.jpg" alt="Image 2"></div>
+            <div class="slide"><img src="pexels-chevanon-333525.jpg" alt="Image 3"></div>
+            <div class="slide"><img src="pexels-freestockpro-1004584.jpg" alt="Image 4"></div>
+            <div class="slide"><img src="pexels-julius-silver-240301-753339.jpg" alt="Image 5"></div>
+            <div class="slide"><img src="pexels-pixabay-358457.jpg" alt="Image 6"></div>
+            <div class="slide"><img src="pexels-syed-hasan-mehdi-270838-815880.jpg" alt="Image "></div>
+            <!-- Add more images here -->
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            let slides = document.querySelectorAll('.slide');
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = 'block';
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+
+        function plusSlides(n) {
+            slideIndex += n - 1;
+            showSlides();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            showSlides();
+        });
+    </script>
+</body>
+</html>
